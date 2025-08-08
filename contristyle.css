@@ -1,0 +1,345 @@
+/* General Styling */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
+  
+  .nav h3 {
+    font-weight: 700;
+    flex: 1;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: black;
+    margin: 0 1rem;
+  }
+  
+  .nav button {
+    padding: 0.5rem 1rem;
+    background-color: blueviolet;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  /* Sections Styling */
+  .section {
+    padding: 2rem 5%;
+  }
+  
+  .guidelines, .join {
+    text-align: center;
+  }
+  
+  .guidelines input, .join input {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .guideline-options, .join-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .guideline-links, .join-options button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  .cards-container {
+    text-align: center;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  
+  .card {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.5rem;
+  }
+  
+  .card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+}
+
+.subscribe input {
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 250px;
+}
+
+.subscribe button {
+    background-color: #6a00f4;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+.unique{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+  
+  /* Responsive Adjustments */
+  
+  /* For tablets and smaller devices (width below 1024px) */
+  @media (max-width: 1024px) {
+    .nav {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .nav a {
+      font-size: 0.9rem;
+    }
+  
+    .nav button {
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .section {
+      padding: 1.5rem;
+    }
+  
+    .cards {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+  
+    .card {
+      width: 45%;
+    }
+  }
+  
+  /* For mobile devices (width below 768px) */
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .nav img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  
+    .nav h3 {
+      margin-bottom: 1rem;
+    }
+  
+    .nav a {
+      font-size: 0.85rem;
+      margin: 0.5rem 0;
+    }
+  
+    .nav button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+  
+  
+    .guideline-options, .join-options {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .guideline-links, .join-options button {
+      width: 100%;
+      padding: 0.8rem;
+    }
+  
+    .cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 90%;
+    }
+  
+    .card img {
+      height: 150px;
+    }
+  }
+  
+  /* For small mobile devices (width below 480px) */
+  @media (max-width: 480px) {
+    .nav {
+      padding: 0.5rem 1rem;
+    }
+  
+    .nav img {
+      height: 2rem;
+      width: 2rem;
+    }
+  
+    .nav h3 {
+      font-size: 1rem;
+    }
+  
+    .nav a {
+      font-size: 0.75rem;
+      margin: 0.3rem 0;
+    }
+  
+    .nav button {
+      font-size: 0.8rem;
+      padding: 0.4rem;
+    }
+  
+    .guideline-options, .join-options {
+      gap: 0.5rem;
+    }
+  
+    .cards-container {
+      padding: 1rem;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  
+    .card img {
+      height: 100px;
+    }
+  
+    .footer-items {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-two {
+      margin-top: 1rem;
+    }
+  
+    .footer hr {
+      width: 95%;
+    }
+  
+    .footer-three {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  
+    .dropdown, .privacy p {
+      font-size: 0.9rem;
+    }
+  }
+  .section h2{
+    line-height: 4rem;
+  }
+  .section p{
+    line-height: 2rem;
+  }
+  .guideline-links{
+   background-color: #fff;
+  }
+  .guideline-links button{
+    border:none;
+    padding:0.5rem 0.8rem;
+    border-radius: 2rem;
+    background-color: blueviolet;
+    color:#fff
+  }
+  .guideline-options button{
+    padding:0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    border:none;
+    background-color: blueviolet;
+    color:#fff;
+  }
+  .pahu{
+    margin-top: 0.4rem;
+  }
+  .gheu{
+    margin-bottom: 1rem;
+  }
+  .join-options input{
+    padding-right: 4rem;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .exp button{
+    margin-top: 3rem;
+  }
+  .logoo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }

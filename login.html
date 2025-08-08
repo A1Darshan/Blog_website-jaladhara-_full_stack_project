@@ -1,40 +1,200 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Login & Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="uni.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background-color: #00b4d8;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
         .form-container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 350px;
         }
-        .form-header {
+
+        h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: #0077b6;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .form-btn {
+            background-color: #52b788;
+            border: none;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .form-btn:hover {
+            background-color: #48cae4;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        .toggle-link a {
+            color: #0077b6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 10px;
         }
     </style>
+    <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            }
+        }
+
+        // Redirect to index.html after successful signup
+        function validateSignupForm() {
+            const fullName = document.signupForm.fullname.value;
+            const email = document.signupForm.email.value;
+            const username = document.signupForm.username.value;
+            const password = document.signupForm.password.value;
+            const confirmPassword = document.signupForm.confirm_password.value;
+            const nameRegex = /^[A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            const usernameRegex = /^[a-zA-Z0-9]+$/;
+            const passwordRegex = /^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9]{6,}$/;
+
+            // Full Name validation
+            if (!nameRegex.test(fullName)) {
+                alert("Full Name must start with a capital letter and can include multiple words.");
+                return false;
+            }
+
+            // Email validation
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Username validation
+            if (!usernameRegex.test(username)) {
+                alert("Username must contain only characters and numbers.");
+                return false;
+            }
+
+            // Password validation
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 6 characters long and contain at least 4 letters and 2 numbers.");
+                return false;
+            }
+
+            // Confirm password validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // If all validations pass, redirect to index.html
+            window.location.href = "home1.html"; 
+            return false;  // Prevents form submission to backend for now
+        }
+
+        // Redirect to index.html after successful login
+        function validateLoginForm() {
+            window.location.href = "home1.html"; 
+            return false;  // Prevents form submission to backend for now
+        }
+    </script>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-header">
-            <h2>Update Your Blog</h2>
-        </div>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary w-100">login</button>
+
+    <!-- Login Form -->
+    <div class="form-container" id="login-form">
+        <h2>Login</h2>
+        <form action="/login" method="POST" onsubmit="return validateLoginForm()">
+            <input type="text" placeholder="Your Username" name="username" required>
+            <input type="password" placeholder="Your Password" name="password" required>
+            <button type="submit" class="form-btn">LOGIN</button>
         </form>
+        <div class="toggle-link">
+            Don't have an account? <a href="javascript:void(0)" onclick="toggleForms()">Sign Up</a>
+        </div>
+        <footer>
+            <p>&copy; 2024 Jaladhara Community. All rights reserved.</p>
+        </footer>
     </div>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Sign-up Form -->
+    <div class="form-container" id="signup-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <form name="signupForm" action="/signup" method="POST" onsubmit="return validateSignupForm()">
+            <input type="text" placeholder="Full Name" name="fullname" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+            <button type="submit" class="form-btn">SIGN UP</button>
+        </form>
+        <div class="toggle-link">
+            Already have an account? <a href="javascript:void(0)" onclick="toggleForms()">Login</a>
+        </div>
+        <footer>
+            <p>&copy; 2024 Jaladhara Community. All rights reserved.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
